@@ -23,7 +23,7 @@ function App() {
 
   return (
     <div style={{ fontFamily: "Arial, sans-serif", padding: "20px", maxWidth: "800px", margin: "auto" }}>
-      <h1 style={{ textAlign: "center" }}>Alex's News</h1>
+      <h1 style={{ textAlign: "center" }}>Personal News Aggregator</h1>
       {newsData &&
         Object.entries(newsData).map(([section, articles]) => (
           <div key={section} style={{ marginBottom: "30px" }}>
