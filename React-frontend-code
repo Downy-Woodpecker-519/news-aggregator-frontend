@@ -2,5 +2,5 @@ git init
 git add .
 git commit -m "Initial commit of frontend"
 git branch -M main
-git remote add origin https://github.com/YOUR_GITHUB_USERNAME/news-aggregator-frontend.git
+git remote add origin https://github.com/Downy-Woodpecker-15/news-aggregator-frontend.git
 git push -u origin main
