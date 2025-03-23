@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
+import "tailwindcss/tailwind.css";
 
-const API_URL = "https://downy-woodpecker-news.onrender.com/news"; // Replace with your actual Render API URL
+const API_URL = "https://mynewsapi.onrender.com/news"; // Replace with your Render API URL
 
 const NewsApp = () => {
   const [articles, setArticles] = useState([]);
@@ -17,18 +18,18 @@ const NewsApp = () => {
   }, []);
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Personal News Aggregator</h1>
+    <div className="container mx-auto p-4 font-sans bg-gray-100 min-h-screen">
+      <h1 className="text-4xl font-bold mb-6 text-center text-blue-700">Personal News Aggregator</h1>
       {loading ? (
-        <p>Loading...</p>
+        <p className="text-lg text-gray-700 text-center">Loading...</p>
       ) : (
         <ul>
           {articles.map((article, index) => (
-            <li key={index} className="mb-4 p-4 border rounded-lg shadow">
-              <a href={article.link} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
-                <h2 className="text-xl font-semibold">{article.title}</h2>
+            <li key={index} className="mb-6 p-6 border rounded-lg shadow-lg bg-white">
+              <a href={article.link} target="_blank" rel="noopener noreferrer" className="text-2xl font-semibold text-blue-600 hover:underline">
+                {article.title}
               </a>
-              <p className="text-sm text-gray-500">
+              <p className="text-md text-gray-600 mt-2">
                 🕒 {article.published} | 📰 {article.source}
               </p>
             </li>
