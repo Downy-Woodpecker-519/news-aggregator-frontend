@@ -5,7 +5,7 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://your-api-url.onrender.com/news") // Replace with your actual backend URL
+    fetch("https://Downy-Woodpecker-news.onrender.com/news") // Replace with your actual backend URL
       .then((response) => response.json())
       .then((data) => {
         setNewsData(data);
