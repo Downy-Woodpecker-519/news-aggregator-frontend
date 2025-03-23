@@ -1,43 +1,47 @@
-import React, { useState, useEffect } from "react";
-import "tailwindcss/tailwind.css";
+import React, { useEffect, useState } from "react";
 
-const API_URL = "https://Downy-Woodpecker-news.onrender.com/news"; // Replace with your Render API URL
-
-const NewsApp = () => {
-  const [articles, setArticles] = useState([]);
+function App() {
+  const [newsData, setNewsData] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(API_URL)
+    fetch("https://your-api-url.onrender.com/news") // Replace with your actual backend URL
       .then((response) => response.json())
       .then((data) => {
-        setArticles(data.articles);
+        setNewsData(data);
         setLoading(false);
       })
-      .catch((error) => console.error("Error fetching news:", error));
+      .catch((error) => {
+        console.error("Error fetching news:", error);
+        setLoading(false);
+      });
   }, []);
 
+  if (loading) {
+    return <h2>Loading...</h2>;
+  }
+
   return (
-    <div className="container mx-auto p-4 font-sans bg-gray-100 min-h-screen">
-      <h1 className="text-4xl font-bold mb-6 text-center text-blue-700">Personal News Aggregator</h1>
-      {loading ? (
-        <p className="text-lg text-gray-700 text-center">Loading...</p>
-      ) : (
-        <ul>
-          {articles.map((article, index) => (
-            <li key={index} className="mb-6 p-6 border rounded-lg shadow-lg bg-white">
-              <a href={article.link} target="_blank" rel="noopener noreferrer" className="text-2xl font-semibold text-blue-600 hover:underline">
-                {article.title}
-              </a>
-              <p className="text-md text-gray-600 mt-2">
-                🕒 {article.published} | 📰 {article.source}
-              </p>
-            </li>
-          ))}
-        </ul>
-      )}
+    <div style={{ fontFamily: "Arial, sans-serif", padding: "20px", maxWidth: "800px", margin: "auto" }}>
+      <h1 style={{ textAlign: "center" }}>Personal News Aggregator</h1>
+      {newsData &&
+        Object.entries(newsData).map(([section, articles]) => (
+          <div key={section} style={{ marginBottom: "30px" }}>
+            <h2 style={{ borderBottom: "2px solid #333", paddingBottom: "5px" }}>{section}</h2>
+            <ul style={{ listStyle: "none", padding: 0 }}>
+              {articles.map((article, index) => (
+                <li key={index} style={{ marginBottom: "15px" }}>
+                  <a href={article.link} target="_blank" rel="noopener noreferrer" style={{ fontSize: "18px", fontWeight: "bold", textDecoration: "none", color: "#007BFF" }}>
+                    {article.title}
+                  </a>
+                  <p style={{ margin: "5px 0", color: "#666" }}>{article.source} | {new Date(article.published).toLocaleString()}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
     </div>
   );
-};
+}
 
-export default NewsApp;
+export default App;
