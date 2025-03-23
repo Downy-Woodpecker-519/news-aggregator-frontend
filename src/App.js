@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "tailwindcss/tailwind.css";
 
-const API_URL = "https://mynewsapi.onrender.com/news"; // Replace with your Render API URL
+const API_URL = "https://Downy-Woodpecker-news.onrender.com/news"; // Replace with your Render API URL
 
 const NewsApp = () => {
   const [articles, setArticles] = useState([]);
