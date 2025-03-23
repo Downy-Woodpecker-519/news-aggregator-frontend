@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const API_URL = "https://your-api-url.onrender.com/news"; // Replace with your actual Render API URL
+const API_URL = "https://downy-woodpecker-news.onrender.com/news"; // Replace with your actual Render API URL
 
 const NewsApp = () => {
   const [articles, setArticles] = useState([]);
